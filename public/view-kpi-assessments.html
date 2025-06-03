@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>View KPI Submissions</title>
+  <link rel="stylesheet" href="styles/style.css" />
+  <style>
+    body {
+      background-color: #121212;
+      color: white;
+      font-family: 'Raleway', sans-serif;
+      padding: 30px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #ffc107;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 30px;
+      background-color: #1f1f1f;
+    }
+
+    th, td {
+      padding: 12px;
+      border: 1px solid #444;
+      text-align: left;
+    }
+
+    th {
+      background-color: #333;
+      color: #ffc107;
+    }
+
+    tr:nth-child(even) {
+      background-color: #2a2a2a;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>KPI Self-Assessment Submissions</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th>Role Description</th>
+        <th>Activities</th>
+        <th>Comments</th>
+        <th>Rating</th>
+        <th>Submitted</th>
+      </tr>
+    </thead>
+    <tbody id="kpiTableBody">
+      <!-- JS inserts rows here -->
+    </tbody>
+  </table>
+
+  <script type="module" src="scripts/view-kpi.js"></script>
+  <script src="scripts/firebase-config.js"></script>
+</body>
+</html>

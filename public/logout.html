@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Logging Out...</title>
+</head>
+<body>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+    import { firebaseConfig } from './scripts/firebase-config.js';
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth();
+
+    signOut(auth).then(() => {
+      window.location.href = "login.html";
+    });
+  </script>
+</body>
+</html>

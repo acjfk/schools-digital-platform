@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Rating Summary</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f8f4e3;
+      color: #3e3e3e;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #4a3c1f;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .tapa-border {
+      border: 10px solid #9c6427;
+      border-radius: 5px;
+      padding: 20px;
+      background-color: #f7f4e9;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin: 40px auto;
+      max-width: 900px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    table th, table td {
+      border: 1px solid #9c6427;
+      padding: 10px;
+      text-align: left;
+    }
+    table th {
+      background-color: #4a3c1f;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <header>Teacher Rating Summary</header>
+  <div class="tapa-border">
+    <table>
+      <thead>
+        <tr>
+          <th>Teacher</th>
+          <th>Week</th>
+          <th>Rating</th>
+          <th>Comment</th>
+        </tr>
+      </thead>
+      <tbody id="summaryTableBody">
+        <tr><td colspan="4">Loading...</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script type="module" src="rating-summary.js"></script>
+
+<script type="module" src="scripts/firebase-config.js"></script>
+</body>
+</html>

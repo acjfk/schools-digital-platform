@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Rating Summary</title>
+  <link rel="stylesheet" href="styles/dashboard-theme.css">
+  <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js"></script>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background-color: #f2f6f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 30px;
+      background: #fff;
+      border: 10px solid #e2b04a; /* tapa-inspired */
+      border-image: url('images/tapa-border.png') 30 round;
+      border-radius: 12px;
+      margin-top: 40px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    h1.title {
+      text-align: center;
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .filters label {
+      font-weight: bold;
+    }
+
+    .filters select {
+      padding: 8px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      min-width: 120px;
+    }
+
+    .filters button {
+      background-color: #0a9396;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .filters button:hover {
+      background-color: #007f84;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    table thead {
+      background-color: #f0f0f0;
+    }
+
+    table th, table td {
+      padding: 12px 10px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    #averageRatingDisplay {
+      font-weight: bold;
+      margin-top: 20px;
+      text-align: center;
+      color: #007f84;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">📊 Teacher Rating Summary</h1>
+
+    <!-- Filters -->
+    <div class="filters">
+      <div>
+        <label for="termSelect">Term:</label>
+        <select id="termSelect">
+          <option value="">All</option>
+          <option value="1">Term 1</option>
+          <option value="2">Term 2</option>
+          <option value="3">Term 3</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="weekSelect">Week:</label>
+        <select id="weekSelect">
+          <option value="">All</option>
+          <!-- Dynamically generated weeks 1-16 -->
+          <script>
+            document.addEventListener("DOMContentLoaded", () => {
+              const weekSelect = document.getElementById("weekSelect");
+              for (let i = 1; i <= 16; i++) {
+                const opt = document.createElement("option");
+                opt.value = i;
+                opt.textContent = `Week ${i}`;
+                weekSelect.appendChild(opt);
+              }
+            });
+          </script>
+        </select>
+      </div>
+
+      <div>
+        <label for="teacherSelect">Teacher:</label>
+        <select id="teacherSelect">
+          <option value="">All</option>
+        </select>
+      </div>
+
+      <div>
+        <button id="exportBtn">📥 Export CSV</button>
+      </div>
+    </div>
+
+    <!-- Table -->
+    <table>
+      <thead>
+        <tr>
+          <th>Teacher</th>
+          <th>Week</th>
+          <th>Term</th>
+          <th>Rating</th>
+          <th>Comment</th>
+          <th>Rated At</th>
+        </tr>
+      </thead>
+      <tbody id="ratingTableBody"></tbody>
+    </table>
+
+    <p id="averageRatingDisplay">Average Rating: —</p>
+  </div>
+
+  <script type="module" src="rating-summary.js"></script>
+
+<script type="module" src="scripts/firebase-config.js"></script>
+</body>
+</html>

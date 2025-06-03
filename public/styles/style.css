@@ -1,0 +1,72 @@
+/* Tapa-style theme */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f4e3;
+    color: #3e3e3e;
+    margin: 0;
+    padding: 0;
+}
+
+/* Tapa border design */
+.tapa-border {
+    border: 10px solid #9c6427;
+    border-radius: 5px;
+    padding: 20px;
+    background-color: #f7f4e9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Fijian-style header */
+header {
+    background-color: #4a3c1f;
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Sidebar styling */
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background-color: #4a3c1f;
+    color: white;
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding: 20px;
+}
+
+.sidebar a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 10px 0;
+    border-bottom: 1px solid #9c6427;
+}
+
+.sidebar a:hover {
+    background-color: #9c6427;
+}
+
+/* Main content area */
+.main-content {
+    margin-left: 270px;
+    padding: 20px;
+}
+
+/* Buttons with Fijian feel */
+.button {
+    background-color: #9c6427;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.button:hover {
+    background-color: #7d4b1b;
+}

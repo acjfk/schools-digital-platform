@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Principal Dashboard</title>
+  <link rel="stylesheet" href="styles/style.css" />
+  <style>
+    /* Same styles as Superadmin Dashboard */
+  </style>
+</head>
+<body>
+
+<div class="sidebar">
+  <header>Principal</header>
+  <a href="principal-dashboard.html">Dashboard</a>
+  <a href="logout.html">Logout</a>
+</div>
+
+<div class="main-content">
+  <header>Welcome, Principal</header>
+
+  <div class="tapa-border">
+    <h2>Principal's Task</h2>
+    <ul id="taskList"></ul>
+  </div>
+
+  <div class="tapa-border">
+    <h2>Staff Overview</h2>
+    <ul id="staffOverviewList"></ul>
+  </div>
+
+  <div class="tapa-border">
+    <h2>School Info</h2>
+    <p>Principal's specific info...</p>
+  </div>
+</div>
+
+<script type="module" src="scripts/principal-dashboard.js"></script>
+
+<script type="module" src="scripts/firebase-config.js"></script>
+</body>
+</html>

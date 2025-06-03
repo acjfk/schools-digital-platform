@@ -1,0 +1,19 @@
+<div class="tapa-border">
+    <h2>Add New User</h2>
+    <form id="addUserForm">
+        <input type="email" id="newEmail" placeholder="User Email" required />
+        <select id="newRole" required>
+            <option value="">Select Role</option>
+            <option value="admin">Admin</option>
+            <option value="headteacher">Headteacher</option>
+            <option value="teacher">Teacher</option>
+        </select>
+        <input type="text" id="schoolId" placeholder="School ID" required />
+        <input type="text" id="schoolType" placeholder="School Type (Primary/High)" required />
+        <button type="submit" class="button">Add User</button>
+  
+
+<script type="module" src="scripts/firebase-config.js"></script>
+<script type="module" src="scripts/add-user-form.js"></script>
+  </form>
+</div>

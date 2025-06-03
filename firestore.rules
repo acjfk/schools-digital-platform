@@ -1,0 +1,59 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Users: Superadmin can access all, others only their own doc
+    match /users/{userId} {
+      allow read, write: if isSuperAdmin() || request.auth.uid == userId;
+    }
+
+    // Tasks: Structured under each school (Primary/High school)
+    match /schools/{schoolId}/tasks/{taskId} {
+
+      // Teachers can submit tasks
+      allow create: if isTeacher() &&
+                    request.resource.data.submittedBy == request.auth.uid &&
+                    request.resource.data.schoolId == schoolId;
+
+      // HODs, Headteachers, Principals, and Admins can read tasks for their school
+      allow read: if (isPSAdmin() || isHSAdmin() || isHeadteacher() || isPrincipal()) &&
+                   getUser().data.schoolId == schoolId;
+
+      // Superadmin can read everything
+      allow read: if isSuperAdmin();
+
+      // Admins can rate/update within their school
+      allow update: if (isPSAdmin() || isHSAdmin() || isHeadteacher() || isPrincipal()) &&
+                     getUser().data.schoolId == schoolId;
+    }
+
+    // 🔽 Helper functions
+    function getUser() {
+      return get(/users/$(request.auth.uid));  // Corrected this line
+    }
+
+    function isTeacher() {
+      return getUser().data.role == "teacher";
+    }
+
+    function isHeadteacher() {
+      return getUser().data.role == "headteacher";
+    }
+
+    function isPrincipal() {
+      return getUser().data.role == "principal";
+    }
+
+    function isPSAdmin() {
+      return getUser().data.role == "ps_admin" && getUser().data.schoolType == "primary";
+    }
+
+    function isHSAdmin() {
+      return getUser().data.role == "hs_admin" && getUser().data.schoolType == "high";
+    }
+
+    function isSuperAdmin() {
+      return getUser().data.role == "superadmin";
+    }
+  }
+}

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task Summary</title>
+  <link rel="stylesheet" href="styles/style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      background-color: #f5f5f5;
+    }
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+    }
+    .summary-container {
+      margin: 2rem auto;
+      max-width: 1000px;
+      background-color: white;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    th, td {
+      padding: 0.75rem;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+    th {
+      background-color: #2c3e50;
+      color: white;
+    }
+    .total {
+      text-align: right;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+    .controls select, .controls button {
+      padding: 0.5rem;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>My Task Submissions Summary</h1>
+
+  <div class="summary-container">
+    <p>Logged in as: <span id="teacher-email"></span></p>
+
+    <div class="controls">
+      <div>
+        <label for="termFilter">Filter by Term:</label>
+        <select id="termFilter">
+          <option value="">All</option>
+          <option value="1">Term 1</option>
+          <option value="2">Term 2</option>
+          <option value="3">Term 3</option>
+        </select>
+.<!-- Inside week filter dropdown -->
+<label for="weekFilter">Week:</label>
+<select id="weekFilter">
+  <option value="">All</option>
+  <option value="1">Week 1</option>
+  <option value="2">Week 2</option>
+  <option value="3">Week 3</option>
+  <option value="4">Week 4</option>
+  <option value="5">Week 5</option>
+  <option value="6">Week 6</option>
+  <option value="7">Week 7</option>
+  <option value="8">Week 8</option>
+  <option value="9">Week 9</option>
+  <option value="10">Week 10</option>
+  <option value="11">Week 11</option>
+  <option value="12">Week 12</option>
+  <option value="13">Week 13</option>
+  <option value="14">Week 14</option>
+  <option value="15">Week 15</option>
+  <option value="16">Week 16</option>
+</select>
+       
+      </div>
+      <div>
+        <button onclick="exportToExcel()">Export to Excel</button>
+        <button onclick="exportToPDF()">Export to PDF</button>
+      </div>
+    </div>
+
+    <table id="taskTable">
+      <thead>
+        <tr>
+          <th>Week</th>
+          <th>Term</th>
+          <th>Task</th>
+          <th>Due Date</th>
+          <th>Submitted At</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <p class="total">Total Tasks Submitted: <span id="totalCount">0</span></p>
+  </div>
+
+  <script type="module" src="scripts/task-summary.js"></script>
+
+<script type="module" src="scripts/firebase-config.js"></script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Headteacher Dashboard</title>
+  <link rel="stylesheet" href="styles/style.css" />
+  <style>
+    body {
+      background-color: #1a1a1a;
+      color: white;
+      font-family: 'Raleway', sans-serif;
+    }
+
+    .sidebar {
+      width: 250px;
+      background-color: #004d4d;
+      padding: 20px;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+
+    .sidebar header {
+      font-size: 1.6rem;
+      margin-bottom: 20px;
+      font-family: 'Orbitron', sans-serif;
+      color: #00ffff;
+    }
+
+    .sidebar a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+
+    .sidebar a:hover {
+      background-color: #00cccc;
+    }
+
+    .main-content {
+      margin-left: 260px;
+      padding: 40px;
+    }
+
+    .main-content h2 {
+      color: #00ffff;
+    }
+
+    .card {
+      background: #262626;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 10px 15px;
+      border: none;
+      background-color: #00cccc;
+      color: #000;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #00ffff;
+    }
+  </style>
+</head>
+<body>
+
+<div class="sidebar">
+  <header>Headteacher</header>
+  <a href="headteacher-dashboard.html">Dashboard</a>
+  <a href="staff-records.html">Add/View Staff Records</a>
+  <a href="kpi-self-assessment.html">KPI Self-Assessment</a>
+  <a href="rate-tasks.html">Rate Teacher Tasks</a>
+  <a href="logout.html">Logout</a>
+</div>
+
+<div class="main-content">
+  <h2>Welcome, Headteacher</h2>
+
+  <div class="card">
+    <h3>Staff Management</h3>
+    <p>View and manage staff records for your school.</p>
+    <button onclick="location.href='staff-records.html'">Staff Records</button>
+  </div>
+
+  <div class="card">
+    <h3>KPI Self-Assessment</h3>
+    <p>Complete and view your own performance assessments.</p>
+    <button onclick="location.href='kpi-self-assessment.html'">KPI Assessment</button>
+  </div>
+
+  <div class="card">
+    <h3>Teacher Task Rating</h3>
+    <p>Review and rate submitted tasks from teachers.</p>
+    <button onclick="location.href='rate-tasks.html'">Rate Tasks</button>
+  </div>
+</div>
+
+<script>
+  // You can add auth check or dynamic content load here if needed.
+</script>
+
+<script type="module" src="scripts/firebase-config.js"></script>
+</body>
+</html>

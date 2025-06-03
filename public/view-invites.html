@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>View Invites</title>
+  <link rel="stylesheet" href="styles/style.css" />
+</head>
+<body>
+  <div class="main-content">
+    <h1>Email Invites Sent</h1>
+    <table border="1" cellpadding="10">
+      <thead>
+        <tr>
+          <th>Email</th>
+          <th>Role</th>
+          <th>School ID</th>
+          <th>Invited By</th>
+        </tr>
+      </thead>
+      <tbody id="inviteBody"></tbody>
+    </table>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js";
+    import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCEOKkVAgU_W_O1iozwpBAf6dIqmRHbrmk",
+      authDomain: "schools-digital-platform.firebaseapp.com",
+      projectId: "schools-digital-platform",
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const inviteBody = document.getElementById("inviteBody");
+
+    const loadInvites = async () => {
+      const snapshot = await getDocs(collection(db, "invites"));
+      snapshot.forEach((doc) => {
+        const data = doc.data();
+        const row = `<tr>
+          <td>${data.email}</td>
+          <td>${data.role}</td>
+          <td>${data.schoolId}</td>
+          <td>${data.invitedBy || "Unknown"}</td>
+        </tr>`;
+        inviteBody.innerHTML += row;
+      });
+    };
+
+    loadInvites();
+  </script>
+
+<script type="module" src="scripts/firebase-config.js"></script>
+</body>
+</html>

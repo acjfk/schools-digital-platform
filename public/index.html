@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- ✅ Login Script -->
+  <script src="login.js" defer></script>
+<head>
+    <meta charset="UTF-8">
+    <title>School Management System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            display: flex;
+            font-family: 'Raleway', sans-serif;
+            height: 100vh;
+            background-color: #5a5a5a;
+            color: #fff;
+        }
+
+        aside {
+            width: 250px;
+            background-color: #330000;
+            padding: 20px;
+            border-right: 3px solid #b8860b;
+        }
+
+        aside h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: #ffc107;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        aside a {
+            display: block;
+            margin-bottom: 12px;
+            text-decoration: none;
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+
+        aside a:hover {
+            background-color: #b8860b;
+        }
+
+        main {
+            flex-grow: 1;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        main h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            color: #ffc107;
+            margin-bottom: 20px;
+        }
+
+        main p {
+            font-size: 1rem;
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            background-color: #8B0000;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 6px;
+            margin: 5px;
+        }
+
+        .btn:hover {
+            background-color: #a30000;
+        }
+
+        form {
+            margin-top: 30px;
+            background-color: #2f2f2f;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #b8860b;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            width: 100%;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #e0a800;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+
+            aside {
+                width: 100%;
+                border-right: none;
+                border-bottom: 3px solid #b8860b;
+            }
+
+            main {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Sidebar Navigation -->
+    <aside>
+        <h2>Navigation</h2>
+        <a href="school-info.html">School Info</a>
+        <a href="communication.html">Communication</a>
+        <a href="records.html">Staff & Student Records</a>
+        <a href="hods.html">Head of Departments</a>
+        <a href="teacher-summary.html">Teachers Summary</a>
+        <a href="task-ratings.html">Task Ratings</a>
+        <a href="exams-reports.html">Exams & Reports</a>
+        <a href="discipline-ohs.html">Disciplinary & Action OHS</a>
+        <a href="chat.html">Chat System</a>
+        <a href="Superadmin-controls.html">Superadmin Controls</a>
+        <a href="email-invite.html">Email Invite System</a>
+    </aside>
+
+    <!-- Main Content -->
+    <main>
+        <h1> 🏫 Digital School Management System </h1>
+        <p>Empowering Fijian schools with a digital platform for higher efficiency and accountability within the Education system.</p>
+
+        <!-- Login Form -->
+       <h2>Login</h2>
+       <form id="loginForm">
+       <input type="email" id="email" placeholder="Email" required><br><br>
+       <input type="password" id="password" placeholder="Password" required><br><br>
+
+  <div id="extraFields">
+    <input type="text" id="schoolId" placeholder="School ID" required><br><br>
+    <select id="userType" required>
+      <option value="">Select User Type</option>    
+  <option value="System Administrator "> All</option>
+      <option value="High School">Principal</option>
+      <option value="High School ">Admin HS</option>
+      <option value="High School">Head Of Dept</option>
+      <option value="High School"> Staff High</option>
+      <option value="High School"> Teacher</option>
+      <option value="Primary School">Headteacher</option>
+      <option value="Primary School"> Admin PS</option>
+      <option value="Primary School"> Staff Primary</option>
+      <option value="Primary School">Teacher</option>
+    </select><br><br>
+  </div>
+
+  <button type="submit" id="loginBtn">Login</button>
+</form>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+  import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
+
+        </form>
+
+        <a href="/register" class="btn">Register</a>
+    </main>
+ 
+     <!-- ✅ Firebase v8 SDKs (no import/export issues) -->
+     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+    <script>
+        // Firebase configuration
+          var firebaseConfig = {
+          apiKey: "AIzaSyCEOKkVAgU_W_O1iozwpBAf6dIqmRHbrmk",
+          authDomain: "schools-digital-platform.firebaseapp.com",
+          projectId: "schools-digital-platform",
+          storageBucket: "schools-digital-platform.firebasestorage.app",
+          messagingSenderId: "774968868905",
+          appId: "1:774968868905:web:361220738186df28919c38",
+          measurementId: "G-FHZG5M1YS5"
+        };
+          firebase.initializeApp(firebaseConfig);
+          const auth = firebase.auth();
+          const db = firebase.firestore();
+
+      const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  const superAdminEmail = "superadmin@example.com"; // CHANGE TO YOUR ACTUAL SUPER ADMIN EMAIL
+
+  const emailField = document.getElementById("email");
+  const extraFields = document.getElementById("extraFields");
+
+  emailField.addEventListener("input", () => {
+    if (emailField.value.trim().toLowerCase() === superAdminEmail.toLowerCase()) {
+      extraFields.style.display = "none";
+      document.getElementById("schoolId").required = false;
+      document.getElementById("userType").required = false;
+    } else {
+      extraFields.style.display = "block";
+      document.getElementById("schoolId").required = true;
+      document.getElementById("userType").required = true;
+    }
+  });
+
+  document.getElementById("loginForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    const email = emailField.value.trim();
+    const password = document.getElementById("password").value;
+
+    const schoolId = document.getElementById("schoolId").value.trim();
+    const userType = document.getElementById("userType").value;
+
+    if (email.toLowerCase() !== superAdminEmail.toLowerCase()) {
+      if (!schoolId || !userType) {
+        alert("School ID and User Type are required.");
+        return;
+      }
+    }
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        if (email.toLowerCase() === superAdminEmail.toLowerCase()) {
+          window.location.href = "superadmin-dashboard.html";
+        } else if (userType === "headteacher") {
+          window.location.href = "headteacher-dashboard.html";
+        } else {
+          window.location.href = "teacher-dashboard.html";
+        }
+      })
+      .catch((error) => {
+        alert("Login failed: " + error.message);
+      });
+  });
+</script>

@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "firebase-admin": "^13.3.0"
+  },
+  "name": "schools-digital-platform",
+  "version": "1.0.0",
+  "main": "checkSuperadmin.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

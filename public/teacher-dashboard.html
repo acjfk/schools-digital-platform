@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Teacher Dashboard</title>
+  <link rel="stylesheet" href="styles/style.css">
+  <style>
+    body {
+      background-color: #1e1e1e;
+      font-family: 'Raleway', sans-serif;
+      color: #ffffff;
+      margin: 0;
+      padding: 0;
+    }
+    .sidebar {
+      width: 250px;
+      background-color: #330000;
+      padding: 20px;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+    .sidebar a {
+      display: block;
+      color: white;
+      padding: 10px;
+      text-decoration: none;
+      margin-bottom: 10px;
+      border-radius: 4px;
+    }
+    .sidebar a:hover {
+      background-color: #b8860b;
+    }
+    .main-content {
+      margin-left: 260px;
+      padding: 40px;
+    }
+    h1 {
+      color: #ffc107;
+    }
+    .card {
+      background: #2a2a2a;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 20px;
+      box-shadow: 0 0 10px rgba(255, 193, 7, 0.1);
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      color: #ccc;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 4px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 12px;
+      width: 100%;
+      background-color: #b8860b;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #ffc107;
+    }
+  </style>
+</head>
+<body>
+
+<div class="sidebar">
+  <h2 style="color: #ffc107;">Teacher</h2>
+  <a href="teacher-dashboard.html">Dashboard</a>
+  <a href="task-summary.html">Task Summary</a>
+  <a href="logout.html">Logout</a>
+</div>
+
+<div class="main-content">
+  <h1>Welcome, Teacher</h1>
+
+  <div class="card">
+    <h2>Submit Weekly Task</h2>
+    <form id="taskForm">
+      <label for="taskTitle">Task Title</label>
+      <input type="text" id="taskTitle" required>
+
+      <label for="taskDesc">Description</label>
+      <textarea id="taskDesc" rows="4" required></textarea>
+
+      <label for="term">Term</label>
+      <select id="term" required>
+        <option value="">Select Term</option>
+        <option value="Term 1">Term 1</option>
+        <option value="Term 2">Term 2</option>
+        <option value="Term 3">Term 3</option>
+      </select>
+
+      <label for="week">Week</label>
+      <select id="week" required>
+        <option value="">Select Week</option>
+        <!-- Week 1 to 16 -->
+        <script>
+          for(let i=1; i<=16; i++) {
+            document.write(`<option value="Week ${i}">Week ${i}</option>`);
+          }
+        </script>
+      </select>
+
+      <label for="submitDate">Submission Date</label>
+      <input type="date" id="submitDate" required>
+
+      <button type="submit">Submit Task</button>
+    </form>
+  </div>
+</div>
+
+<script type="module" src="scripts/teacher-dashboard.js"></script>
+
+<script type="module" src="scripts/firebase-config.js"></script>
+</body>
+</html>

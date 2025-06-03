@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>High School Admin Dashboard</title>
+  <link rel="stylesheet" href="styles/style.css" />
+  <style>
+    /* Sidebar and main content styling (Same as Primary School Admin) */
+    .sidebar {
+      width: 250px;
+      background-color: #333;
+      position: fixed;
+      height: 100%;
+      padding-top: 20px;
+      color: #fff;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+    }
+    .sidebar a {
+      display: block;
+      color: #fff;
+      padding: 10px;
+      text-decoration: none;
+      font-size: 18px;
+      transition: background-color 0.3s;
+    }
+    .sidebar a:hover {
+      background-color: #444;
+    }
+
+    .main-content {
+      margin-left: 270px;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    .main-content header {
+      font-size: 2rem;
+      color: #b8860b;
+      margin-bottom: 20px;
+    }
+
+    .admin-dashboard {
+      margin-top: 20px;
+    }
+
+    .admin-dashboard button {
+      background-color: #b8860b;
+      color: white;
+      padding: 10px;
+      border: none;
+      font-size: 1.1rem;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .admin-dashboard button:hover {
+      background-color: #e0a800;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <header>High School Admin</header>
+    <a href="high-admin-dashboard.html">Dashboard Home</a>
+    <a href="staff-records.html">Staff Records</a>
+    <a href="task-management.html">Task Management</a>
+    <a href="term-summary.html">Term Summary</a>
+    <a href="logout.html">Logout</a>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <header>High School Admin Dashboard</header>
+
+    <div class="admin-dashboard">
+      <button id="viewStaffRecordsBtn">View Staff Records</button>
+      <button id="manageTasksBtn">Manage Tasks</button>
+      <button id="viewTermSummaryBtn">View Term Summary</button>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('viewStaffRecordsBtn').addEventListener('click', () => {
+      window.location.href = 'staff-records.html';
+    });
+
+    document.getElementById('manageTasksBtn').addEventListener('click', () => {
+      window.location.href = 'task-management.html';
+    });
+
+    document.getElementById('viewTermSummaryBtn').addEventListener('click', () => {
+      window.location.href = 'term-summary.html';
+    });
+  </script>
+
+<script type="module" src="scripts/firebase-config.js"></script>
+</body>
+</html>
